@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,500,600&display=swap');
+
+.single-page {
+	font-family: 'Raleway', sans-serif;
+}
+.single-page .form-list .item{
+	border-bottom: 1px solid rgba(0,0,0,0.14);
+	padding: 0px 17px;
+	width: 80%;
+
+}
+
+.single-page .form-list .item a{
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 0;
+	font-size: 14px;
+}
+.single-page .form-list .item a:hover{
+	text-decoration: underline;
+ }
+
+.single-page .form-list .item a .item-icon{
+}
+
+.single-page .title{
+	font-family: 'Helvetica';
+	font-weight: 300;
+	text-transform: initial;
+	padding-bottom: 15px;
+	border-bottom: 1px solid rgba(0,0,0,0.11);
+
+}
+
+
+
+/* sidebar single page */
+
+.sidebar-sp{
+	background: #e9e9e9;
+}
+.sidebar-sp .title{
+	padding: 15px;
+	background: #3905869e;
+	font-size: 22px;
+	font-family: 'Oswald', sans-serif;
+	color: #fff;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+.sidebar-sp  .title.faqs{
+	background:#1b8b95cf;
+}
+.sidebar-sp .title.forms{
+}
+.sidebar-sp .menus{
+}
+.sidebar-sp .menus .menu{
+	border-bottom: 1px solid #3729299e;
+}
+.sidebar-sp .menus .menu:hover{
+	background: rgb(0,0,0,0.2) ;
+}
+
+.sidebar-sp .menus .menu.active{
+	background: rgb(0,0,0,0.2);
+}
+.sidebar-sp .menus .menu a{
+	padding:14px 22px;
+	color: #3729299e;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+
+/* Gallery */
+#photo-gallery{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-column-gap: 1px;
+	grid-template-rows: 1fr;
+}
+
+#photo-gallery a{
+	padding: 0px 1px 1px 0;
+}
+#photo-gallery a img{
+	height: 100%;
+}

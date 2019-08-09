@@ -19,6 +19,8 @@ class EventController extends Controller
     public function index()
     {
         //
+        $all_events = Event::paginate(15);
+        return view('backpanel.gallery.index', compact('all_events'));
     }
 
     /**
@@ -78,6 +80,9 @@ class EventController extends Controller
     public function edit($id)
     {
         //
+        $event = Event::with('images')->find($id);
+
+        return view('backpanel.gallery.edit', compact('event'));
     }
 
     /**
@@ -90,6 +95,13 @@ class EventController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $event              = Event::findOrFail($id);
+        $event->title       = $request->title;
+        $event->description = $request->description;
+
+        $event->save();
+
+        return redirect()->route('event.index')->with(['class' => 'success', 'message' => 'succesfully updated the event']);
     }
 
     /**
@@ -101,5 +113,10 @@ class EventController extends Controller
     public function destroy($id)
     {
         //
+        $event = Event::find($id);
+
+        $event->delete();
+
+        return redirect()->back()->with(['class' => 'success', 'message' => 'Succesfully deleted event']);
     }
 }

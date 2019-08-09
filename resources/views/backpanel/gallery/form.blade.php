@@ -13,9 +13,11 @@
 				<textarea name="content" id="content" cols="30" rows="10" class="form-control">@if(isset($event)) {{ $event->description }} @endif</textarea>
 			</div>
 
+		@if(!isset($event))
 			<div class="form-group">
 				<label for="image">Event Images:</label>
 				<input type="file" name="images[]" id="" class="form-control"  multiple >
 				<small>You can select as many images as you want by ctrl + click on images</small>
 			</div>
+			@endif
 

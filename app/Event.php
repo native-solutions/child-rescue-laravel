@@ -12,6 +12,21 @@ class Event extends Model
     ];
 
 
+
+
+    /**
+    * To get the short description of event from model
+    *
+    **/
+    public function shortDescription()
+    {
+    	return substr($this->description, 0, 40) . '...';
+    }
+
+    /**
+    * One to many relationship with Images
+    *
+    **/
     public function images()
     {
     	return $this->hasMany('App\Gallery');

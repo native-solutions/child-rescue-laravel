@@ -1,80 +1,236 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html> 
+<html lang="en">
+<head> 
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+<title> {{ $setting->site_name }}</title> 
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="HandheldFriendly" content="True">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+<!-- Style Sheets --> 
+<link rel="stylesheet" type="text/css" media="all" href="{{ asset('css/reset.css') }}" />
+<link rel="stylesheet" type="text/css" media="all" href="{{ asset('css/trunk.css') }}" />
+<link rel="stylesheet" type="text/css" media="all" href="{{ asset('css/nivo-slider.css') }}" />
+<link rel="stylesheet" type="text/css" media="all" href="{{ asset('css/index.css') }}" />
+<link rel="stylesheet" type="text/css" media="all" href="{{ asset('css/liMarquee.css') }}" />
+<link rel="stylesheet" type="text/css" media="all" href="{{ asset('css/104.css') }}" />
+<link rel="stylesheet" type="text/css" media="all" href="{{ asset('css/single-page.css') }}" />
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css"/>
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+<!-- Scripts --> 
+<script type="text/javascript">
+    if (typeof jQuery == 'undefined')
+        document.write(unescape("%3Cscript src='js/jquery-1.9.js'" + 
+                                                            "type='text/javascript'%3E%3C/script%3E"))
+</script>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
 
-                    </ul>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+<!--[if lt IE 9]>
+<script src="js/html5shiv.js"></script>
+<![endif]-->
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
+</head> 
+ 
+<body> 
+
+<div class="container">
+
+    <header class="slide">     <!-- Add "slideRight" class to items that move right when viewing Nav Drawer  -->
+        <ul id="navToggle" class="burger slide">    <!--    Add "slideRight" class to items that move right when viewing Nav Drawer  -->
+            <li></li><li></li><li></li>
+        </ul>
+        <h1>Emergency Number: {{ $setting->emergency_number }}</h1>
+        
+    </header>
+</div>
+    <div class=" slide toptop">
+        <div class="slide level container">
+        <div class="level-left">
+            <ul class="top-left-menu">
+                <li><a href="{{ route('ecomplain') }}">e-complain</a></li>
+                <li><a href="">Mail</a></li>
+                <li><a href="">Sitemap</a></li>
+            </ul>
+        </div>
+        <div class="level-right">
+            <div class="phone-number">
+                <img src="{{ asset('images/icons/message.svg') }}" width="24" alt="">
+                <span class="numbers email"> {{ $setting->email }} </span>
+
+            </div>
+
+            <div class="phone-number">
+                <img src="{{ asset('images/icons/office-telephone.svg') }}" width="24" alt="">
+                <span class="numbers"> {{ $setting->phone_number}} </span>
+
+            </div>
+
+                <div class="onoffswitch">
+        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+        <label class="onoffswitch-label" for="myonoffswitch">
+            <span class="onoffswitch-inner"></span>
+            <span class="onoffswitch-switch"></span>
+        </label>
+    </div>
+</div>
+
+        </div>
+
+    </div>
+
+
+    <div class="container">
+    <div class="slide slideright">
+        <div class="page-logo">
+            <figure>
+
+  <div class="wrapper">
+    <div class="ring">
+        <div class="coccoc-alo-phone coccoc-alo-green coccoc-alo-show">
+            <div class="coccoc-alo-ph-circle"></div>
+            <div class="coccoc-alo-ph-circle-fill"></div>
+            <div class="coccoc-alo-ph-img-circle"></div>
+            <div class="emergency-number" title="Emergency Number : 104"> {{ $setting->emergency_number }}</div>
+
+        </div>
+    </div>
+</div>
+
+
+                <img src="{{ Storage::url($setting->header_logo_center) }}" alt="">
+                <figure class="visit-nepal">
+                        <img src="{{ Storage::url($setting->header_logo_right) }}" alt="">
+                    </figure>
+            </figure>
+        </div>
+    </div>
+</div>
+
+    <nav class="slide level slideright">
+        <ul class="level-left">
+            <li><a href="{{ route('home') }}" class="active">HOME</a></li>
+            @foreach($menus as $menu)
+            <li>
+                <a href="{{ route('page', ['id' => $menu->id]) }}"> {{ $menu->title }} <ion-icon name="arrow-dropdown"></ion-icon></a>
+                @if($menu->hasSubmenu())
+                <div class="menu-dropdown">
+                    <ul class="menu">
+                        @foreach($menu->submenus() as $submenu)
+                            <li class="item"><a href=" {{ route('page', ['id' => $submenu->id]) }}"> {{ $submenu->title }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
-            </div>
-        </nav>
+                @endif
+            </li>
+            @endforeach
+          <li><a href="{{ route('gallery') }}">Gallery</a></li>  
+            <li ><a id="searchmenu" href="#">SEARCH <img src="{{ asset('images/icons/search.svg') }}" width="18" alt=""></a>
+                <form action="https://www.google.com/search" class="searchbox" id="searchform">
+                    <input type="text" name="q" id="" placeholder="Search ">
+                </form>
+            </li>
+        </ul>
+    </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+    <div class="slide quick-notice slideright">
+        <span class="notice">
+            @foreach($newss as $news)
+                <span class="bold-and-big"></span>
+                {{ $news->title }}
+                |||
+            @endforeach
+        </span> 
     </div>
-</body>
+
+@yield('content')
+
+
+
+
+
+
+
+<footer class="footer bg-footer">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-two-fifths">
+                <div class="title">About US</div>
+                <p class="content">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure nesciunt commodi facere maiores, ut, vel mollitia quasi repellat fuga? Cum, esse! Dolor deleniti minus totam facere iure autem laboriosam architecto.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt amet mollitia quis facere, ad consectetur adipisci voluptatibus labore. Velit repellendus nemo, nostrum possimus commodi. Consectetur nobis neque officia? Deserunt voluptas architecto, nostrum quod dolor illo cum voluptatibus itaque neque, consectetur repellendus, quo sit illum voluptate facere maiores voluptatem ab. Vel.
+                </p>
+                <a href="" class="read-more">Read More +</a>
+            </div>
+            <div class="column  is-offset-1">
+                <div class="title">Quick Links</div>
+                <div class="columns">
+                    <ul class="menus column">
+                        <li class="item">Home</li>
+                        <li class="item">Organization</li>
+                        <li class="item">Projects</li>
+                        <li class="item">Notices</li>
+                        <li class="item">Downloads</li>
+                        <li class="item">Contact Us</li>
+                        <li class="item">Press Release</li>
+                    </ul>
+                    <ul class="menus column">
+                        <li class="item">Home</li>
+                        <li class="item">Organization</li>
+                        <li class="item">Projects</li>
+                        <li class="item">Notices</li>
+                        <li class="item">Downloads</li>
+                        <li class="item">Contact Us</li>
+                        <li class="item">Press Release</li>
+                    </ul>
+
+                </div>
+            </div>
+            
+
+        </div>
+    </div>
+</footer>
+
+<script src="{{ asset('js/app.js') }}"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" language="javascript" src="{{ asset('js/trunk.js') }}"></script>
+<script type="text/javascript" language="javascript" src="{{  asset('js/jquery.nivo.slider.js') }}"></script>
+<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+<script type="text/javascript" language="javascript" src="{{ asset('js/jquery.liMarquee.js') }}"></script>
+
+<script type="text/javascript">
+    $(window).load(function(){
+        console.log("hello");
+        $('#slider').nivoSlider({
+            effect: 'sliceUpDownLeft',
+            directionNav: false,
+            controlNav: false,
+            pauseTime: 5000,
+        });
+        $('.notice').liMarquee({
+            direction : 'left',
+            loop : -1,
+            circular: false,
+        });
+
+        $('#searchmenu').on('click', function(){
+            $('#searchform > input').toggleClass('d-block').toggleClass('w-200');
+        })      
+    });
+</script>
+    
+</body> 
 </html>
+
+
+
+
+
+
+

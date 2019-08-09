@@ -271,7 +271,7 @@
                     <img class="w-2r bdrs-50p" src="https://randomuser.me/api/portraits/men/10.jpg" alt="">
                   </div>
                   <div class="peer">
-                    <span class="fsz-sm c-grey-900">John Doe</span>
+                    <span class="fsz-sm c-grey-900"> {{ Auth::user()->name }} </span>
                   </div>
                 </a>
                 <ul class="dropdown-menu fsz-sm">
@@ -317,7 +317,7 @@
 
         <!-- ### $App Screen Footer ### -->
         <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600">
-          <span>Copyright © 2017 Designed by <a href="https://colorlib.com" target='_blank' title="Colorlib">Colorlib</a>. All rights reserved.</span>
+          <span>Copyright © 2019 Designed by <a href="#" target='_blank' title="Colorlib">Native Solutions pvt. ltd</a>. All rights reserved.</span>
         </footer>
       </div>
     </div>

@@ -49,7 +49,7 @@ class DownloadController extends Controller
     public function store(Request $request)
     {
         //
-       $filepath  = $this->uploadSingleFile($request, 'file');
+       $filepath  = $this->uploadSingleFile($request, $request->file('file'));
 
         $download = Download::create([
             'title'   => $request->title,

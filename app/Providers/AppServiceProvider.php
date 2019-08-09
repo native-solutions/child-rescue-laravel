@@ -4,6 +4,9 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+use App\Menu;
+
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -24,5 +27,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        \View::share([
+            'newss' => \App\News::all(),
+            'menus' => Menu::where('parent_id', 0)->get(),
+            'setting' => \App\Setting::first(),
+        ]);
     }
 }

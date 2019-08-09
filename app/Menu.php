@@ -39,4 +39,33 @@ class Menu extends Model
             ->generateSlugsFrom('title')
             ->saveSlugsTo('slug');
     }
+
+    /* 
+    * Check if this menu has child menu or not
+    *
+    */
+    public function hasSubmenu()
+    {
+    	if(\App\Menu::where('parent_id', $this->id)->first()){
+    		return true;
+    	}	
+    	return false;
+    }
+
+    /*
+    *return submenus
+    */
+    public function submenus()
+    {
+    	return \App\Menu::where('parent_id', $this->id)->get();
+    }
+
+    /*
+    * get all download files for this menu
+    *
+    */
+    public function files()
+    {
+    	return $this->hasMany('App\Download');
+    }
 }
