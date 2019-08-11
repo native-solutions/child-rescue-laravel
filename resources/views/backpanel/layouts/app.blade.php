@@ -57,6 +57,8 @@
     <link rel="stylesheet" href=" {{ asset('css/app.css') }}">
     <link rel="stylesheet" href=" {{ asset('backpanel/css/index.css') }}">
 
+    @yield('css')
+
   </head>
 
 

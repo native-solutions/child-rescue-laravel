@@ -16,9 +16,11 @@ class CreateDocumentsTable extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
+            $table->string('title_nepali')->nullable();
             $table->string('slug');
             $table->unsignedInteger('menu_id');
             $table->longText('content');
+            $table->longText('content_nepali')->nullable();
             $table->timestamps();
         });
     }

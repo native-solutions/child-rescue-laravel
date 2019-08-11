@@ -9,7 +9,7 @@ class Download extends Model
     //
 
     protected $fillable = [
-    	'title', 'menu_id' , 'file'
+    	'title', 'menu_id' , 'file', 'title_nepali'
     ];
 
     public function menu()

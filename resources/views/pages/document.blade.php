@@ -8,9 +8,13 @@
 			<div class="columns">
 				<div class="column is-8">
 					<div class="single-page">
-						<div class="title"> {{ $document->title }} </div>
+						<div class="title">@if(\App::isLocale('en')) {{ $document->title }} @else {{ $document->title_nepali }} @endif</div>
 						<p class="description">
-							{!!  $document->content !!}
+							@if(\App::isLocale('en'))
+							 {!! $document->content !!} 
+							 @else
+							  {!! $document->content_nepali !!}
+							 @endif 
 						</p>
 					</div>
 				</div>

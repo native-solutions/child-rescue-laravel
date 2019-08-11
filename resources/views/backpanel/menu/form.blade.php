@@ -7,6 +7,12 @@
 
 				</div>
 
+				<div class="form-group">
+					<label for="menutitle">Title (नेपालीमा )</label>
+
+					<input type="text" class="form-control" id="menutitle" name="nepalititle" aria-describedby="menuTitleHelp" placeholder="Enter menu title" value="@if(isset($menu)) {{ $menu->title-nepali }} @endif"> 
+				</div>
+
 
 				@if(sizeof($all_menus))
 				<div class="form-group">

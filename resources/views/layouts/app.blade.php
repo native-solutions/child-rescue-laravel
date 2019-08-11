@@ -2,7 +2,7 @@
 <html lang="en">
 <head> 
 
-<title> {{ $setting->site_name }}</title> 
+<title> @if($setting) {{ $setting->site_name }} @endif</title> 
 
 <meta charset="utf-8">
 <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)">
@@ -45,7 +45,7 @@
         <ul id="navToggle" class="burger slide">    <!--    Add "slideRight" class to items that move right when viewing Nav Drawer  -->
             <li></li><li></li><li></li>
         </ul>
-        <h1>Emergency Number: {{ $setting->emergency_number }}</h1>
+        <h1>@if($setting)  @if(\App::isLocale('en')) Emergency Number: {{ $setting->emergency_number }}  @else आपतकालिन: {{ $setting->emergency_number_nepali }} @endif @endif</h1>
         
     </header>
 </div>
@@ -61,23 +61,24 @@
         <div class="level-right">
             <div class="phone-number">
                 <img src="{{ asset('images/icons/message.svg') }}" width="24" alt="">
-                <span class="numbers email"> {{ $setting->email }} </span>
+                <span class="numbers email"> @if($setting) {{ $setting->email }} @endif </span>
 
             </div>
 
             <div class="phone-number">
                 <img src="{{ asset('images/icons/office-telephone.svg') }}" width="24" alt="">
-                <span class="numbers"> {{ $setting->phone_number}} </span>
+                <span class="numbers"> @if($setting) @if(\App::isLocale('en')) {{ $setting->phone_number }} @else {{ $setting->phone_number_nepali }} @endif @endif </span>
 
             </div>
 
-                <div class="onoffswitch">
-        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
-        <label class="onoffswitch-label" for="myonoffswitch">
-            <span class="onoffswitch-inner"></span>
-            <span class="onoffswitch-switch"></span>
-        </label>
-    </div>
+
+                <form action="{{ route('change-locale') }}" class="onoffswitch">
+                    <input type="checkbox" name="locale" value="np" class="onoffswitch-checkbox" id="myonoffswitch" @if(\App::isLocale('en')) checked @endif>
+                    <label class="onoffswitch-label" for="myonoffswitch">
+                    <span class="onoffswitch-inner"></span>
+                    <span class="onoffswitch-switch"></span>
+                    </label>
+                </form>
 </div>
 
         </div>
@@ -96,16 +97,18 @@
             <div class="coccoc-alo-ph-circle"></div>
             <div class="coccoc-alo-ph-circle-fill"></div>
             <div class="coccoc-alo-ph-img-circle"></div>
-            <div class="emergency-number" title="Emergency Number : 104"> {{ $setting->emergency_number }}</div>
+            <div class="emergency-number" title="Emergency Number : 104">
+                @if($setting) @if(\App::isLocale('en')) {{ $setting->emergency_number }} @else {{ $setting->emergency_number_nepali }} @endif @endif
+            </div>
 
         </div>
     </div>
 </div>
 
 
-                <img src="{{ Storage::url($setting->header_logo_center) }}" alt="">
+                <img src="@if($setting) {{ Storage::url($setting->header_logo_center) }} @endif" alt="">
                 <figure class="visit-nepal">
-                        <img src="{{ Storage::url($setting->header_logo_right) }}" alt="">
+                        <img src="@if($setting) {{ Storage::url($setting->header_logo_right) }} @endif" alt="">
                     </figure>
             </figure>
         </div>
@@ -114,9 +117,12 @@
 
     <nav class="slide level slideright">
         <ul class="level-left">
-            <li><a href="{{ route('home') }}" class="active">HOME</a></li>
+            <li><a href="{{ route('home') }}" class="active"> @lang('menu.home')</a></li>
             @foreach($menus as $menu)
-            <li>
+            
+            @if(App::isLocale('en'))
+
+           <li>
                 <a href="{{ route('page', ['id' => $menu->id]) }}"> {{ $menu->title }} <ion-icon name="arrow-dropdown"></ion-icon></a>
                 @if($menu->hasSubmenu())
                 <div class="menu-dropdown">
@@ -128,10 +134,27 @@
                 </div>
                 @endif
             </li>
+           @else
+            
+            <li>
+                <a href="{{ route('page', ['id' => $menu->id]) }}"> {{ $menu->title_nepali }} <ion-icon name="arrow-dropdown"></ion-icon></a>
+                @if($menu->hasSubmenu())
+                <div class="menu-dropdown">
+                    <ul class="menu">
+                        @foreach($menu->submenus() as $submenu)
+                            <li class="item"><a href=" {{ route('page', ['id' => $submenu->id]) }}"> {{ $submenu->title_nepali }}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+            </li>
+ 
+ @endif 
             @endforeach
-          <li><a href="{{ route('gallery') }}">Gallery</a></li>  
-            <li ><a id="searchmenu" href="#">SEARCH <img src="{{ asset('images/icons/search.svg') }}" width="18" alt=""></a>
-                <form action="https://www.google.com/search" class="searchbox" id="searchform">
+
+          <li><a href="{{ route('gallery') }}"> @lang('menu.gallery')</a></li>  
+            <li ><a id="searchmenu" href="#">@lang('menu.search') <img src="{{ asset('images/icons/search.svg') }}" width="18" alt=""></a>
+                <form action="{{ route('search') }}" class="searchbox" onkeypress="" id="searchform">
                     <input type="text" name="q" id="" placeholder="Search ">
                 </form>
             </li>
@@ -160,7 +183,7 @@
     <div class="container">
         <div class="columns">
             <div class="column is-two-fifths">
-                <div class="title">About US</div>
+                <div class="title"> @lang('menu.about')</div>
                 <p class="content">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure nesciunt commodi facere maiores, ut, vel mollitia quasi repellat fuga? Cum, esse! Dolor deleniti minus totam facere iure autem laboriosam architecto.
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt amet mollitia quis facere, ad consectetur adipisci voluptatibus labore. Velit repellendus nemo, nostrum possimus commodi. Consectetur nobis neque officia? Deserunt voluptas architecto, nostrum quod dolor illo cum voluptatibus itaque neque, consectetur repellendus, quo sit illum voluptate facere maiores voluptatem ab. Vel.
@@ -222,6 +245,22 @@
         $('#searchmenu').on('click', function(){
             $('#searchform > input').toggleClass('d-block').toggleClass('w-200');
         })      
+
+        $('#searchform > input').on('keyup', function(event){
+            if(event.keyCode == 13) {
+                event.preventDefault();
+                $("#searchform").submit();
+     
+            }
+        })
+
+        $('.onoffswitch').on('click', function(event){
+            event.preventDefault();
+            $('.onoffswitch').submit();
+        });
+
+     
+
     });
 </script>
     

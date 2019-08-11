@@ -31,6 +31,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+        \VisitLog::save();
+
         $sliders = SliderImage::all();
         $quick_links = QuickLink::all();
         $five_news = News::orderBy('created_at', 'desc')->take(5)->get();
@@ -99,6 +102,30 @@ class HomeController extends Controller
         ]);
 
         return redirect()->back()->with(['class' => 'success', 'message' => 'Your complain has been registered succesfully.']);
+    }
+
+    public function search(Request $request)
+    {
+        $q = $request->q;
+
+        return redirect('https://google.com.np/search?q=site:' . url("") . " $q");       
+    }
+
+    public function changeLocale(Request $request)
+    {
+        if($request->locale == "np"){
+            \App::setLocale('np');
+            session()->pull('locale');
+            session()->put('locale', 'np');
+            return redirect()->back();
+        }
+        else{
+            \App::setLocale('en');
+            session()->pull('locale');
+            session()->put('locale', 'en');
+            return redirect()->back();
+        }
+
     }
 
 

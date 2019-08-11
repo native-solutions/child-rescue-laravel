@@ -45,6 +45,7 @@ class MenuController extends Controller
         //
         $menu = Menu::create([
             'title' => $request->title,
+            'title_nepali' => $request->nepalititle,
             'parent' => $request->parent
         ]); 
 
@@ -90,6 +91,7 @@ class MenuController extends Controller
         $menu = Menu::findOrFail($id);
 
         $menu->title = $request->title;
+        $menu->title_nepali = $request->nepalititle;
         $menu->parent_id = $request->parent;
 
         $menu->save();

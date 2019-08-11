@@ -13,7 +13,11 @@ class HomeController extends Controller
     //
     public function index()
     {
-    	
-    	return view('backpanel.index');
+		$all_visit_log = \VisitLog::all();
+
+		$total_visit = $all_visit_log->count();
+		$unique_visit = $all_visit_log->unique('ip')->count();
+
+    	return view('backpanel.index', compact('total_visit', 'unique_visit'));
     }
 }

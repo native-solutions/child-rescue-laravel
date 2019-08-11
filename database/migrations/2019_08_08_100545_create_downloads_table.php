@@ -16,6 +16,7 @@ class CreateDownloadsTable extends Migration
         Schema::create('downloads', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
+            $table->string('title_nepali')->nullable();
             $table->unsignedInteger('menu_id');
             $table->string('file');
             $table->timestamps();

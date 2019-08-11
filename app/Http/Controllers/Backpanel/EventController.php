@@ -47,7 +47,10 @@ class EventController extends Controller
 
         $event = Event::create([
             'title'       => $request->title,
+            'title_nepali'       => $request->nepalititle,            
             'description' => $request->description
+            'description_nepali' => $request->nepalidescription
+
         ]);
 
         foreach ($filepaths as $filepath) {
@@ -97,8 +100,8 @@ class EventController extends Controller
         //
         $event              = Event::findOrFail($id);
         $event->title       = $request->title;
-        $event->description = $request->description;
-
+        $event->title_nepali       = $request->nepalititle;
+        $event->description_nepali = $request->nepalidescription;
         $event->save();
 
         return redirect()->route('event.index')->with(['class' => 'success', 'message' => 'succesfully updated the event']);

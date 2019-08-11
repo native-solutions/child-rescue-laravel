@@ -51,8 +51,10 @@ class DocumentController extends Controller
         }
         $document = Document::create([
             'title'   => $request->title,
+            'title_nepali' => $request->nepalititle,
             'menu_id' => $request->menu,
             'content' => $request->content,
+            'content_nepali' => $request->nepalicontent,
         ]);
 
         return redirect()->back()->with(['class' => 'success', 'message' => 'Succesfully created a page named ' . '"' . $document->title . '"']);
@@ -82,6 +84,7 @@ class DocumentController extends Controller
         $page      = Document::find($id);
         $menu      = Menu::where('id', $page->menu_id)->first();
 
+
         return view('backpanel.document.edit', compact('all_menus', 'menu', 'page'));
     }
 
@@ -102,8 +105,11 @@ class DocumentController extends Controller
         }
 
         $page->title   = $request->title;
+         $page->title_nepali = $request->nepalititle;
         $page->menu_id = $request->menu;
         $page->content = $request->content;
+        $page->content_nepali = $request->nepalicontent;
+
 
         return rediret()->route('document.index')->with(['class' => 'success', 'message' => 'Pages succesfully updated']);
     }

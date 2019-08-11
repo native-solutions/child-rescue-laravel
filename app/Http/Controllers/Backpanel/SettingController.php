@@ -50,10 +50,14 @@ class SettingController extends Controller
 
         Setting::create([
             'site_name'          => $request->site_title,
+            'site_name_nepali'          => $request->site_title_nepali,
             'email'              => $request->email,
             'emergency_number'   => $request->emergency_number,
+            'emergency_number_nepali'   => $request->emergency_number_nepali,            
             'phone_number'       => $request->phone_number,
-            'address'            => $request->address,
+            'phone_number_nepali' => $request->phone_number_nepali,
+            'address'            =>     $request->address,
+            'address_nepali'            => $request->address_nepali,
             'header_logo_center' => $main_logo_file,
             'header_logo_right'  => $right_logo_file,
             'top_nav_color'      => $request->top_nav_color,
@@ -108,12 +112,18 @@ class SettingController extends Controller
         }
 
         $setting->site_name = $request->site_title;
+        $setting->site_name_nepali = $request->site_title_nepali;
+
         $setting->email      = $request->email;
         $setting->phone_number = $request->phone_number;
+        $setting->phone_number_nepali = $request->phone_number_nepali;
         $setting->emergency_number = $request->emergency_number;
+        $setting->emergency_number_nepali = $request->emergency_number_nepali;
         $setting->top_nav_color = $request->top_nav_color;
         $setting->main_nav_color = $request->main_nav_color;
         $setting->address        = $request->address;
+        $setting->address_nepali   = $request->address_nepali;
+
         $setting->save();
 
         return redirect()->back()->with(['class' => 'success', 'message' => 'Setting succesfully updated']);   

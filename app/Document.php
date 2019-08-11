@@ -12,7 +12,7 @@ class Document extends Model
     //
 
     protected  $fillable = [
-    	'title', 'slug', 'menu_id', 'content'
+    	'title', 'slug', 'menu_id', 'content', 'title_nepali', 'content_nepali'
     ];
 
 

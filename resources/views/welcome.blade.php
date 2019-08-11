@@ -76,7 +76,7 @@
     <div class="tile is-6 column">
         <div class=" is-vertical">
             <section class="section tile is-child light-border-on-right" id="about-us">
-                <div class="title">About Us</div>
+                <div class="title">@lang('menu.about')</div>
                 <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit sed perspiciatis libero iste, fuga saepe totam omnis quod magnam deleniti debitis officia laboriosam quam ratione molestiae quos ut, maxime ullam! Adipisci porro impedit voluptas, laborum quos molestiae reiciendis nostrum accusamus nam error amet, vitae, unde soluta! Quam aliquam obcaecati nesciunt iusto cupiditate, rem. Illo inventore quam, ullam suscipit assumenda molestiae praesentium, dolorum quod eos necessitatibus, laboriosam qui similique consequatur. Quaerat accusamus qui suscipit ratione maiores cum asperiores in veritatis. At porro aperiam sequi enim sit explicabo asperiores eos, veniam nam expedita voluptate unde maxime iste. Quas nisi placeat, maxime nam!
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam tempora necessitatibus obcaecati ab modi. Nihil fugit ipsam est in sed. Id at quam tempora blanditiis vero inventore praesentium dolorum dolor mollitia ipsum deleniti corrupti molestias, aut fugit dignissimos perferendis molestiae.
                 </p>

@@ -11,13 +11,16 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/page/{id}', 'HomeController@page')->name('page');
 Route::get('/gallery/{id?}', 'HomeController@gallery')->name('gallery');
 Route::Get('/news/{id}',     'HomeController@singleNews')->name('single-news');
 Route::get('/ecomplain',     'HomeController@ecomplain')->name('ecomplain');
 Route::post('/ecomplain',     'HomeController@ecomplainStore')->name('ecomplain.store');
+Route::get('/search',     'HomeController@search')->name('search');
+Route::get('/changelocale', 'HomeController@changeLocale')->name('change-locale');
+
 
 
 /*

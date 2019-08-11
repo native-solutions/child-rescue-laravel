@@ -53,6 +53,7 @@ class DownloadController extends Controller
 
         $download = Download::create([
             'title'   => $request->title,
+            'title_nepali' => $request->nepalititle,
             'menu_id' => $request->menu,
             'file'    => $filepath
         ]);
@@ -107,6 +108,8 @@ class DownloadController extends Controller
         }
 
         $file->title = $request->title;
+        $file->title_nepali => $request->nepalititle,
+
 
         if($request->menu){
             $file->menu_id = $request->menu; 

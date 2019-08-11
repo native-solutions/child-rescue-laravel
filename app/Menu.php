@@ -16,7 +16,7 @@ class Menu extends Model
     *
     */
     protected $fillable = [
-    	'title', 'parent_id', 'slug'
+    	'title', 'parent_id', 'slug', 'title_nepali'
     ];
 
 
