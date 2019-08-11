@@ -6,7 +6,8 @@ return [
 'gallery' => 'Gallery',
 'home'    => 'Home',
 'search'  => 'Search',
-'about'   => 'About Us'
+'about'   => 'About Us',
+'menu'   => 'Downloads'
 
 ]
 

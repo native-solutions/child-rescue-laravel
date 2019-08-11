@@ -1,8 +1,15 @@
-				<div class="form-group">
-					<label for="menutitle">File Title <sup>*</sup></label>
+				<div class="form-group row">
+					<div class="col-md-6">
+						<label for="menutitle">File Title <sup>*</sup></label>
 
-					<input type="text" class="form-control" id="filetitle" name="title" aria-describedby="fileTitleHelp" placeholder="Enter File title" value="@if(isset($file)) {{ $file->title }} @endif">  
+						<input type="text" class="form-control" id="filetitle" name="title" aria-describedby="fileTitleHelp" placeholder="Enter File title" value="@if(isset($file)) {{ $file->title }} @endif">  
+					</div>
 
+					<div class="col-md-6">
+						<label for="menutitle">File Title (Nepali)<sup>*</sup></label>
+
+						<input type="text" class="form-control" id="filetitle" name="nepalititle" aria-describedby="fileTitleHelp" placeholder="Enter File title" value="@if(isset($file)) {{ $file->title_nepali }} @endif">  
+					</div>
 
 				</div>
 

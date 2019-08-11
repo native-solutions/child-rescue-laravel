@@ -108,7 +108,7 @@ class DownloadController extends Controller
         }
 
         $file->title = $request->title;
-        $file->title_nepali => $request->nepalititle,
+        $file->title_nepali = $request->nepalititle;
 
 
         if($request->menu){

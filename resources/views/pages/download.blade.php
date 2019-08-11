@@ -7,16 +7,26 @@
 			<div class="columns">
 				<div class="column is-8">
 					<div class="single-page">
-						<div class="title">{{ $menu->title }}</div>
+						<div class="title">@if(\App::isLocale('en')) {{ $menu->title }} @else {{ $menu->title_nepali }} @endif</div>
 						<ul class="form-list">
 							@foreach($menu->files as $file)
+							@if(\App::isLocale('en'))
 							<li class="item"><a href="{{ Storage::url($file->file) }}">
-								<span class="item-name">Lost Children Registration Application Form</span>
+								<span class="item-name">{{ $file->title }}</span>
 								<span class="item-icon">
 									<img src="{{ asset('images/icons/inbox.svg') }}" width="20" alt="">
 								</span>
 							</a>
 							</li>
+							@else
+														<li class="item"><a href="{{ Storage::url($file->file) }}">
+								<span class="item-name"> {{ $file->title_nepali }}</span>
+								<span class="item-icon">
+									<img src="{{ asset('images/icons/inbox.svg') }}" width="20" alt="">
+								</span>
+							</a>
+							</li>
+@endif
 							@endforeach
 
 						</ul>
